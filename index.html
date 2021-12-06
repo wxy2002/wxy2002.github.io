@@ -258,7 +258,7 @@
 <p>连续的均衡化可以得到一个均匀的概率密度函数。</p>
 <p>但是直方图是离散的，是概率密度函数的近似。</p>
 <p>可以使用离散的图像变换。</p>
-<p>$s<em>k$ $=$ $T(r_k)$ $=$ $(L-1)$ $\sum</em>{j=0}^k$  $p_r$ $(r_j)$</p>
+<p>$s_k$ $=$ $T(r_k)$ $=$ $(L-1)$ $求和(  p_r$ $(r_j)),j∈[0,L-1]$</p>
 <p>优点：全自动（无需规定参数）、均衡化后的图像覆盖更宽的灰度级，对比度更强。</p>
 <p>特点：当多个图片之间内容相同只是对比度不同时，直方图均衡化可以实现处理后的图片基本相似。</p>
 <p>OpenCV中直方图均衡化代码实现：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">equ = cv2.equalizeHist(img)</span><br><span class="line">cv2.imshow(<span class="string">&#x27;equalization&#x27;</span>, np.hstack((img, equ)))  <span class="comment"># 并排显示</span></span><br><span class="line">cv2.waitKey(<span class="number">0</span>)</span><br></pre></td></tr></table></figure></p>
