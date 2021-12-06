@@ -109,19 +109,15 @@
 <p>$k∈[0,L-1],L=2^i,i是比特数。$</p>
 <p>$h(r_k)=n_k是图像f(x,y)中灰度为r_k的像素的数量。$</p>
 <p>$p(r_k)=\frac {n_k}{MN},M和N是行数和列数，代表图像中该灰度级像素的概率。$</p>
-<h2 id="直方图绘制"><a href="#直方图绘制" class="headerlink" title="直方图绘制"></a>直方图绘制</h2><p>OpenCV中计算和绘制图片的直方图代码实现：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">img = cv2.imread(<span class="string">&#x27;Carol.jpg&#x27;</span>, <span class="number">0</span>)</span><br><span class="line">plt.hist(img.ravel(), <span class="number">256</span>, [<span class="number">0</span>, <span class="number">256</span>])</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-
+<h2 id="直方图绘制"><a href="#直方图绘制" class="headerlink" title="直方图绘制"></a>直方图绘制</h2><p>OpenCV中计算和绘制图片的直方图代码实现：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">img = cv2.imread(<span class="string">&#x27;Carol.jpg&#x27;</span>, <span class="number">0</span>)</span><br><span class="line">plt.hist(img.ravel(), <span class="number">256</span>, [<span class="number">0</span>, <span class="number">256</span>])</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure></p>
 <h2 id="直方图均衡化"><a href="#直方图均衡化" class="headerlink" title="直方图均衡化"></a>直方图均衡化</h2><p>$灰度映射：s=T(r),0≤r≤L-1$</p>
 <p>连续的均衡化可以得到一个均匀的概率密度函数。</p>
 <p>但是直方图是离散的，是概率密度函数的近似。</p>
 <p>可以使用离散的图像变换。</p>
-<p>$公式：s_k=T(r_k)=(L-1)\sum_{j=0}^kp_r(r_j)$</p>
+<p>$公式：s<em>k=T(r_k)=(L-1)\sum</em>{j=0}^kp_r(r_j)$</p>
 <p>优点：全自动（无需规定参数）、均衡化后的图像覆盖更宽的灰度级，对比度更强。</p>
 <p>特点：当多个图片之间内容相同只是对比度不同时，直方图均衡化可以实现处理后的图片基本相似。</p>
-<p>OpenCV中直方图均衡化代码实现：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">equ = cv2.equalizeHist(img)</span><br><span class="line">cv2.imshow(<span class="string">&#x27;equalization&#x27;</span>, np.hstack((img, equ)))  <span class="comment"># 并排显示</span></span><br><span class="line">cv2.waitKey(<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
-
+<p>OpenCV中直方图均衡化代码实现：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">equ = cv2.equalizeHist(img)</span><br><span class="line">cv2.imshow(<span class="string">&#x27;equalization&#x27;</span>, np.hstack((img, equ)))  <span class="comment"># 并排显示</span></span><br><span class="line">cv2.waitKey(<span class="number">0</span>)</span><br></pre></td></tr></table></figure></p>
 <h2 id="直方图匹配"><a href="#直方图匹配" class="headerlink" title="直方图匹配"></a>直方图匹配</h2> 
       <!-- reward -->
       
@@ -521,6 +517,29 @@
     viewer_init()
 </script> 
 <!-- MathJax -->
+ <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.6/unpacked/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+  var ayerConfig = {
+    mathjax: true,
+  };
+</script>
 
 <!-- Katex -->
 
